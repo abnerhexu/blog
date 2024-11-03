@@ -17,7 +17,7 @@ def index() -> rx.Component:
     return rx.container(
         navbar(),
         rx.color_mode.button(position="top-right"),
-        rx.vstack(
+        rx.desktop_only(rx.vstack(
             rx.vstack(
             rx.flex(
                 rx.image(
@@ -88,8 +88,78 @@ def index() -> rx.Component:
             spacing="5",
             justify="top",
             min_height="85vh",
-        ), spacing="5em", align="center"
-        )
+        ), spacing="5em", align="center"),
+        ),
+        rx.mobile_and_tablet(
+            rx.vstack(
+            rx.vstack(
+            rx.flex(
+                rx.image(
+                    src="/profile.jpg",
+                    width="120px",
+                    height="auto",
+                    border_radius="60px 60px",
+                    # border="5px solid #555",
+                ), justify="center", align="center"),
+            rx.heading(config.profiler_name),
+            rx.hstack(
+                rx.flex(rx.icon("navigation"), rx.text(config.profiler_location)),
+                rx.flex(rx.icon("github"), rx.link(rx.text("GitHub"), href="https://github.com/"+config.profiler_github)),
+                spacing="5em",
+                justify="center"
+            ),
+            justify="center",
+            spacing="2em",
+            align="center"
+        ),
+        rx.vstack(
+            rx.vstack(
+                rx.box(rx.heading("Introduction")),
+                rx.box(
+                    rx.vstack(
+                        rx.text(config.profiler_role), 
+                        rx.text(config.profiler_introduction), 
+                        rx.hstack(rx.button(rx.hstack(rx.text("Read more"), rx.icon("arrow-right")), size="2", variant="surface", color_scheme="blue"), justify="center"))
+                ),
+                spacing="2em", justify="between", flow="row"
+            ),
+            rx.vstack(
+                rx.box(rx.heading("Education")), 
+                rx.box(rx.box(
+                    rx.vstack(
+                        rx.foreach(config.profiler_education, lambda e: rx.flex(
+                            rx.box(
+                                rx.vstack(
+                                    rx.text(rx.text.strong(e["unit"]), ", "+e["loc"]),
+                                    rx.text(e["degree"])
+                                )), 
+                            rx.box(
+                                rx.text(e["year"])), 
+                            rx.box(
+                                rx.image(e["logo"], width="10%")), direction="column"))
+                    ),
+                )), 
+                spacing="2em", justify="between", flow="row"
+            ),
+            rx.vstack(
+                rx.box(rx.heading("Certifications")), 
+                rx.box(
+                    rx.vstack(
+                        rx.foreach(config.profiler_certifications, lambda e: rx.vstack(
+                            rx.text(rx.text.strong(e["title"]), ", by "+e["from"]),
+                            rx.text(e["year"]),
+                            direction="column",
+                            spacing="0em"
+                            )
+                        ),
+                ),), 
+                spacing="2em", justify="between", flow="row", width="100%"
+            ),
+            spacing="5",
+            justify="top",
+            min_height="85vh",
+        ), spacing="5em", align="center")
+        ),
     )
 
 
