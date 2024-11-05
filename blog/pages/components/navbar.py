@@ -1,6 +1,6 @@
 import reflex as rx
 
-from rxconfig import config
+from ..info import blog_name
 
 def navbar_link(text: str, url: str) -> rx.Component:
     return rx.link(
@@ -14,7 +14,7 @@ def navbar() -> rx.Component:
             rx.hstack(
                 rx.hstack(
                     rx.text(
-                        config.blog_name, size="4", weight="medium"
+                        blog_name, size="4", weight="medium"
                     ),
                     align_items="center",
                 ),
@@ -33,7 +33,7 @@ def navbar() -> rx.Component:
         #     rx.hstack(
         #         rx.hstack(
         #             rx.text(
-        #                 config.blog_name, size="4", weight="medium"
+        #                 blog_name, size="4", weight="medium"
         #             ),
         #             align_items="center",
         #         ),
