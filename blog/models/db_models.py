@@ -5,4 +5,7 @@ class User(rx.Model, table=True):
 
     username: str
     password: str
-    
+
+class BlogInfo(rx.Model, table=True):
+    entity: str
+    evalue: str
