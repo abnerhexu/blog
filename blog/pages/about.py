@@ -2,6 +2,8 @@ import reflex as rx
 
 from .components.navbar import navbar
 from .components.sidebar import generate_sidebar_category
+from .components.footer import footer
+
 poem = """
 涉水阔波出四江，山高峻险势难量。
 有识乾坤物堪大，仍怜世间草木青。
@@ -79,7 +81,9 @@ def about_page() -> rx.Component:
                     ), width="100%"),
                     spacing="2em"
                 )
-            )
+            ),
+            footer()
         ),
-        spacing="5em"
+        spacing="5em",
+        min_height="75vh",
     )

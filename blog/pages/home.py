@@ -1,6 +1,8 @@
 import reflex as rx
 
 from .components.navbar import navbar
+from .components.clientip import display_user_ip
+from .components.footer import footer
 
 from .info import blog_name, profiler_name, profiler_location, profiler_github, profiler_role, profiler_introduction, profiler_education, profiler_certifications, profile_image, font_family
 
@@ -10,6 +12,7 @@ def home_page() -> rx.Component:
     return rx.container(
         navbar(),
         rx.color_mode.button(position="top-right"),
+        # display_user_ip(),
         rx.desktop_only(rx.vstack(
             rx.vstack(
             rx.flex(
@@ -153,4 +156,5 @@ def home_page() -> rx.Component:
             min_height="85vh",
         ), spacing="5em", align="center")
         ),
+        footer()
     )
