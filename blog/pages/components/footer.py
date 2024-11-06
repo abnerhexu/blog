@@ -11,8 +11,8 @@ def footer_items_1() -> rx.Component:
             "沙河小分队", size="4", weight="bold", as_="h3"
         ),
         footer_item("沙河教育和科研网", "/shahe-network"),
-        footer_item("计算机系统导论", "https://ucomputing.shalicon.org/"),
-        
+        footer_item("计算机系统导论", "https://ucomputing.shalicon.org"),
+        footer_item("计算机体系结构课程网站", "https://computerarchitecture.shalicon.org"),
         spacing="4",
         text_align=["center", "center", "start"],
         flex_direction="column",

@@ -39,5 +39,5 @@ def network_page() -> rx.Component:
             footer(),
             ),
         spacing="5em",
-        min_height="75vh",
+        min_height="85vh",
     )
