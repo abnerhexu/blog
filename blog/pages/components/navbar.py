@@ -14,7 +14,7 @@ def navbar() -> rx.Component:
             rx.hstack(
                 rx.hstack(
                     rx.text(
-                        blog_name, size="4", weight="medium"
+                        blog_name, size="4", weight="medium", font_family="InterVariable"
                     ),
                     align_items="center",
                 ),

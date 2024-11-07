@@ -2,7 +2,7 @@ import reflex as rx
 
 
 def footer_item(text: str, href: str) -> rx.Component:
-    return rx.link(rx.text(text, size="3"), href=href)
+    return rx.link(rx.text(text, size="3", font_family="InterVariable"), href=href)
 
 
 def footer_items_1() -> rx.Component:
@@ -68,6 +68,7 @@ def footer() -> rx.Component:
                         size="3",
                         white_space="nowrap",
                         weight="medium",
+                        font_family="InterVariable"
                     ),
                     spacing="4",
                     align_items=[

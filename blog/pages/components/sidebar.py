@@ -3,7 +3,7 @@ import reflex as rx
 def generate_sidebar_item(section: str, href="") -> rx.Component:
     return rx.box(
         rx.link(
-            rx.text(section),
+            rx.text(section, font_family="InterVariable"),
             href=href,
             underline="none"
         ),
@@ -15,7 +15,7 @@ def generate_sidebar_category(
 ) -> rx.Component:
     return rx.vstack(
         rx.foreach(components, lambda e: rx.box(
-        rx.text(e),
+        rx.text(e, font_family="InterVariable"),
         width="100%"
     ))
     )

@@ -23,23 +23,23 @@ friends = [
 ]
 def poem_content() -> rx.Component:
     return rx.vstack(
-        rx.heading("Poem"),
-        rx.markdown(poem)
+        rx.heading("Poem", font_family="InterVariable"),
+        rx.markdown(poem, font_family="InterVariable")
     )
 
 def hobby_content() -> rx.Component:
     return rx.vstack(
-        rx.heading("Hobby"),
-        rx.markdown(hobby)
+        rx.heading("Hobby", font_family="InterVariable"),
+        rx.markdown(hobby, font_family="InterVariable")
     )
 
 def friends_content() -> rx.Component:
     return rx.vstack(
         rx.desktop_only(
             rx.vstack(
-                rx.heading("Friends"),
+                rx.heading("Friends", font_family="InterVariable"),
                 rx.grid(
-                    rx.foreach(friends, lambda v: rx.card(rx.vstack(rx.text(v[0]), rx.text(v[2]), rx.link("go", href=v[1])))),
+                    rx.foreach(friends, lambda v: rx.card(rx.vstack(rx.text(v[0], font_family="InterVariable"), rx.text(v[2], font_family="InterVariable"), rx.link(rx.text("go", font_family="InterVariable"), href=v[1])))),
                     columns="4"
                 )
             )
@@ -53,21 +53,30 @@ def friends_content() -> rx.Component:
         )
         )
 
+def github_commits() -> rx.Component:
+    return rx.container(
+        rx.vstack(
+            rx.heading("Github commits", font_family="InterVariable"),
+            rx.image(src="https://ghchart.rshah.org/abnerhexu", width="100%")
+        ),
+    )
+
 @rx.page(route="/about", title="About me | Abnerhexu's Blog")
 def about_page() -> rx.Component:
     return rx.container(
         rx.vstack(
             navbar(),
             rx.color_mode.button(position="top-right"),
-            rx.button(rx.hstack(rx.icon("arrow-left"), rx.text("Back")), variant="ghost", on_click=rx.redirect("/"), size="4"),
+            rx.button(rx.hstack(rx.icon("arrow-left"), rx.text("Back", font_family="InterVariable")), variant="ghost", on_click=rx.redirect("/"), size="4"),
             rx.desktop_only(
                 rx.hstack(
                     rx.box(rx.vstack(
                         poem_content(),
                         hobby_content(),
+                        github_commits(),
                         friends_content(),
                     ), width="80%"),
-                    rx.vstack(rx.heading("Table of contents", size="4"), generate_sidebar_category(["Poem", "Hobby", "Friends"]), width="20%")
+                    rx.vstack(rx.heading("Table of contents", size="4", font_family="InterVariable"), generate_sidebar_category(["Poem", "Hobby", "Friends"]), width="20%")
                 )
             ),
             rx.mobile_and_tablet(
@@ -77,11 +86,13 @@ def about_page() -> rx.Component:
                        rx.vstack(
                         poem_content(),
                         hobby_content(),
+                        github_commits(),
                         friends_content(),
                     ), width="100%"),
                     spacing="2em"
                 )
             ),
+            rx.spacer(),
             footer()
         ),
         spacing="5em",
